@@ -1,0 +1,402 @@
+---
+const startYear = 2016;
+const yearsOfExperience = new Date().getFullYear() - startYear;
+
+interface Experience {
+  company: string;
+  location: string;
+  role: string;
+  type?: string;
+  period: string;
+  summary: string;
+  bullets: string[];
+}
+
+interface SkillGroup {
+  category: string;
+  icon: string;
+  items: string[];
+}
+
+const experiences: Experience[] = [
+  {
+    company: "Early Stage",
+    location: "Mexico",
+    role: "Fullstack Engineer",
+    type: "Contractor",
+    period: "January 2026 – Present",
+    summary:
+      "Responsible for the design, development, and implementation of software solutions using TypeScript, React, Next.js, Drizzle ORM, and Mastra. Working across both frontend and backend following engineering best practices.",
+    bullets: [
+      "Developed end-to-end features across frontend and backend layers.",
+      "Designed and maintained APIs and business logic using TypeScript.",
+      "Built modern, responsive user interfaces with React and Next.js.",
+      "Modeled and managed database schemas using Drizzle ORM.",
+      "Delivered software, technical documentation, and related artifacts for each release.",
+      "Applied best practices: modular architecture, strict typing, clean code, and scalable design principles.",
+    ],
+  },
+  {
+    company: "Polisofwares",
+    location: "Mexico",
+    role: "Head of Technology",
+    period: "January 2025 – January 2026",
+    summary:
+      "Led and built a solid RESTful API for Mexico's General Hospital project alongside a team of developers, implementing healthcare data standards and robust security protocols.",
+    bullets: [
+      "Implemented HL7 FHIR protocol for healthcare data interoperability.",
+      "Applied security measures: JWT auth, token-based communication, data encryption.",
+      "Enforced SOLID principles and design patterns (Singleton, Controller–Service–Repository).",
+      "Provided technical guidance; defined technologies, architecture, and dev roadmap.",
+      "Reviewed requirements, defined tasks, dependencies, estimates, and planning.",
+      "Implemented integration and unit tests to catch bugs before production.",
+    ],
+  },
+  {
+    company: "YAVE",
+    location: "Mexico",
+    role: "Software Engineer",
+    period: "December 2023 – January 2025",
+    summary:
+      "Backend engineer focused on enhancing the codebase following best practices, ensuring APIs are secure, scalable, and well-documented.",
+    bullets: [
+      "Integrated Stripe for Payment Flow, enabling scalable high-volume transaction handling.",
+      "Built a modular setup to manage multiple Stripe API versions cleanly.",
+      "Developed an application to manage and validate fiscal/tax information, designed for future scalability.",
+    ],
+  },
+  {
+    company: "Mi Salud",
+    location: "USA",
+    role: "Software Engineer",
+    period: "December 2021 – November 2023",
+    summary:
+      "Full-stack engineer on a telehealth platform connecting clinicians and patients. Early hire on a team that scaled to 12 engineers. Stack: Go (Clean Architecture), Node.js, Express, React.",
+    bullets: [
+      "Improved socket communication security with token-based authentication.",
+      "Refactored scheduled queries to optimize concurrency and accommodate more simultaneous users.",
+      "Internationalized the application to support multiple languages with a scalable i18n architecture.",
+      "Developed API services for dynamic dashboard configuration across user groups.",
+      "Dev-owned QA: code reviews and end-to-end testing across devices and browsers.",
+      "Created user-friendly custom React components in close collaboration with the design team.",
+    ],
+  },
+  {
+    company: "Listo Servicios Digitales",
+    location: "Mexico",
+    role: "Project Manager",
+    period: "June 2019 – 2021",
+    summary:
+      "Responsible for project planning and client communication. Conducted thorough internal testing to guarantee quality before delivery.",
+    bullets: [
+      "Created scheduling model separating support from dev tasks, improving deadline accuracy.",
+      "Automated the invoice issuance process for a well-known Japanese automotive brand.",
+      "Analyzed business requirements to determine platform compatibility or custom dev needs.",
+      "Applied Scrum methodology for sprint planning and hour allocation.",
+      "Oversaw integrations with accounting systems (Contpaq, Intelisis, SAP).",
+      "Provided expert guidance and support to clients consuming our APIs.",
+    ],
+  },
+  {
+    company: "Jaguar Innovación Tecnológica",
+    location: "Mexico",
+    role: "Software Engineer — R&D",
+    period: "Earlier experience",
+    summary:
+      "Software developer in the Research & Development team, innovating and creating devices for the IoT industry.",
+    bullets: [
+      "Developed a people-recognition system with AI for movie theaters.",
+      "Retrained a Convolutional Neural Network to classify available vs. occupied seats.",
+      "Used TensorFlow (Python) to train convolutional neural networks.",
+      "Implemented Movidius NCS (VPU) to enhance neural network inference performance.",
+      "Coordinated between electronics, mechatronics, and software teams to integrate a prototype.",
+    ],
+  },
+];
+
+const skillGroups: SkillGroup[] = [
+  {
+    category: "Programming Languages",
+    icon: "💻",
+    items: ["Go", "JavaScript", "TypeScript", "Python", "PHP"],
+  },
+  {
+    category: "Frameworks",
+    icon: "🧩",
+    items: ["Gin", "Beego", "Express", "Next.js", "React", "Django", "FastAPI"],
+  },
+  {
+    category: "Databases",
+    icon: "🗄️",
+    items: ["MongoDB", "Firebase", "MySQL", "PostgreSQL", "Microsoft SQL"],
+  },
+  {
+    category: "Other Tech Skills",
+    icon: "⚙️",
+    items: ["Git", "Docker", "Coolify", "CI/CD", "ORMs"],
+  },
+  {
+    category: "Management Tools",
+    icon: "📋",
+    items: ["Notion", "Jira", "Linear", "Wrike"],
+  },
+  {
+    category: "Soft Skills",
+    icon: "🤝",
+    items: ["Leadership", "Teamwork", "Resourceful", "Startup experience"],
+  },
+];
+---
+
+<div class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 desk-bg">
+  <div class="w-full max-w-4xl">
+
+    <!-- Small label above folder -->
+    <div class="flex justify-between px-1 mb-1">
+      <span class="text-amber-400/40 text-xs font-mono tracking-widest uppercase">Portfolio · CV</span>
+      <span class="text-amber-400/30 text-xs font-mono">2026</span>
+    </div>
+
+    <!-- Tab row -->
+    <div class="flex items-end gap-1 pl-3">
+      <button id="tab-personal" class="tab-btn" data-active="true">
+        📋 Personal
+      </button>
+      <button id="tab-skills" class="tab-btn" data-active="false">
+        ⚙️ Skills
+      </button>
+      <button id="tab-experience" class="tab-btn" data-active="false">
+        💼 Experience
+      </button>
+    </div>
+
+    <!-- Folder body -->
+    <div class="folder-body bg-amber-50 border border-amber-300 rounded-b-2xl rounded-tr-2xl shadow-2xl shadow-black/60">
+
+      <!-- Folder strip (binder holes + label) -->
+      <div class="flex items-center gap-3 px-5 py-3 border-b border-amber-200">
+        <div class="flex gap-2.5 flex-shrink-0">
+          <div class="w-3 h-3 rounded-full border-2 border-amber-400/60 bg-amber-100 shadow-inner"></div>
+        </div>
+        <span class="text-amber-900 text-xs font-bold font-mono tracking-widest truncate uppercase">
+          Eduardo Peralta · Software Engineer · Mérida, Yucatán
+        </span>
+        <a
+          href="mailto:eduardoperalta013@gmail.com"
+          class="ml-auto text-amber-700 text-xs hover:text-amber-950 transition-colors hidden sm:block font-mono flex-shrink-0 font-medium"
+        >
+          eduardoperalta013@gmail.com
+        </a>
+      </div>
+
+      <!-- Paper wrapper -->
+      <div class="p-3 sm:p-5">
+        <div class="bg-white rounded-lg border border-stone-100 overflow-hidden shadow-sm">
+          <!-- Indigo accent stripe (like a notebook's rule line at top) -->
+          <div class="h-1 bg-gradient-to-r from-indigo-500 to-indigo-400"></div>
+
+          <!-- Scrollable content area -->
+          <div class="paper-scroll max-h-[65vh] overflow-y-auto">
+
+            <!-- ── PERSONAL INFO PANEL ── -->
+            <div id="panel-personal" class="panel-content p-5 sm:p-8">
+              <div class="pb-6 mb-8 border-b border-stone-100">
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">Eduardo Peralta</h1>
+                <p class="text-indigo-600 font-semibold text-lg mt-1">Software Engineer</p>
+                <p class="text-stone-400 text-sm mt-0.5">Mérida, Yucatán</p>
+              </div>
+
+              <div class="mb-8">
+                <h2 class="text-xs font-bold tracking-widest text-indigo-500 uppercase mb-4">About Me</h2>
+                <div class="space-y-3 text-stone-600 leading-relaxed text-sm sm:text-base">
+                  <p>
+                    Software developer with <strong class="text-stone-800">{yearsOfExperience} years of experience</strong>, collaborating
+                    with engineering teams both as an individual contributor and as a technology lead.
+                  </p>
+                  <p>
+                    My main strength is bringing <strong class="text-stone-800">structure and clarity</strong> to
+                    projects — organizing tasks according to business priorities so teams can move fast without losing
+                    sight of what matters.
+                  </p>
+                  <p>
+                    Strong expertise in <strong class="text-stone-800">backend development, API integrations, databases,
+                    and automation</strong>. Currently incorporating AI and code agents to build higher-quality software
+                    even faster.
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <h2 class="text-xs font-bold tracking-widest text-indigo-500 uppercase mb-4">Education</h2>
+                <div class="flex items-start gap-4 p-4 bg-stone-50 rounded-xl border border-stone-100">
+                  <span class="text-2xl flex-shrink-0">🎓</span>
+                  <div>
+                    <p class="font-bold text-stone-800 text-sm sm:text-base">
+                      Cybernetic and Computer Systems Engineer
+                    </p>
+                    <p class="text-indigo-600 text-sm font-medium mt-0.5">La Salle University — Mexico City</p>
+                    <p class="text-stone-400 text-xs mt-0.5">September 2011 – May 2016</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ── SKILLS PANEL ── -->
+            <div id="panel-skills" class="panel-content hidden p-5 sm:p-8">
+              <div class="pb-4 mb-6 border-b border-stone-100">
+                <h2 class="text-2xl font-bold text-stone-900">Skills</h2>
+                <p class="text-stone-400 text-sm mt-1">Technical &amp; soft skills organized by category</p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {skillGroups.map((group) => (
+                  <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+                    <h3 class="text-xs font-bold tracking-widest text-indigo-500 uppercase mb-3">
+                      {group.icon} {group.category}
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                      {group.items.map((item) => (
+                        <span class="px-2.5 py-1 bg-white border border-stone-200 text-stone-700 text-xs font-medium rounded-full shadow-sm">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- ── EXPERIENCE PANEL ── -->
+            <div id="panel-experience" class="panel-content hidden p-5 sm:p-8">
+              <div class="pb-4 mb-6 border-b border-stone-100">
+                <h2 class="text-2xl font-bold text-stone-900">Experience</h2>
+                <p class="text-stone-400 text-sm mt-1">{yearsOfExperience} years across startups and scale-ups</p>
+              </div>
+
+              <div class="space-y-8">
+                {experiences.map((exp) => (
+                  <div class="relative pl-6 border-l-2 border-indigo-100">
+                    <!-- Timeline dot -->
+                    <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-2 border-indigo-400 flex-shrink-0"></div>
+
+                    <div>
+                      <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-0.5">
+                        <span class="font-bold text-stone-900 text-sm sm:text-base">{exp.company}</span>
+                        <span class="text-stone-400 text-xs">{exp.location}</span>
+                        <span class="ml-auto text-xs bg-indigo-50 text-indigo-600 border border-indigo-100 rounded-full px-2.5 py-0.5 font-medium whitespace-nowrap">
+                          {exp.period}
+                        </span>
+                      </div>
+                      <p class="text-indigo-600 font-semibold text-xs sm:text-sm mb-2">
+                        {exp.role}{exp.type ? ` · ${exp.type}` : ""}
+                      </p>
+                      <p class="text-stone-500 text-xs sm:text-sm leading-relaxed mb-3">{exp.summary}</p>
+                      <ul class="space-y-1.5">
+                        {exp.bullets.map((b) => (
+                          <li class="flex items-start gap-2 text-xs sm:text-sm text-stone-600">
+                            <span class="text-indigo-300 mt-0.5 flex-shrink-0 font-bold">›</span>
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>{/* end paper-scroll */}
+        </div>
+      </div>
+
+    </div>{/* end folder-body */}
+
+    <!-- Contact footer -->
+    <div class="mt-3 px-1 sm:hidden">
+      <a href="mailto:eduardoperalta013@gmail.com" class="text-amber-400/50 text-xs font-mono hover:text-amber-300 transition-colors">
+        eduardoperalta013@gmail.com
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .desk-bg {
+    background-color: #1c1917;
+    background-image: radial-gradient(ellipse at 60% 40%, #292524 0%, #1c1917 70%);
+  }
+
+  /* ── Folder tab buttons ── */
+  .tab-btn {
+    padding: 0.55rem 1.1rem;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    border-bottom: none;
+    transition: background-color 0.15s, color 0.15s;
+    position: relative;
+    margin-bottom: -1px; /* overlap folder top border to hide the gap */
+    z-index: 0;
+    white-space: nowrap;
+  }
+
+  .tab-btn[data-active="true"] {
+    background-color: #fffbeb; /* amber-50 — matches folder body */
+    border-color: #fcd34d; /* amber-300 */
+    color: #451a03; /* amber-950 */
+    z-index: 2;
+  }
+
+  .tab-btn[data-active="false"] {
+    background-color: #fde68a; /* amber-200 */
+    border-color: rgba(251, 191, 36, 0.5); /* amber-400/50 */
+    color: #92400e; /* amber-800 */
+    z-index: 1;
+  }
+
+  .tab-btn[data-active="false"]:hover {
+    background-color: #fef3c7; /* amber-100 */
+  }
+
+  /* ── Folder body sits above the tab z-index baseline ── */
+  .folder-body {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Custom thin scrollbar ── */
+  .paper-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  .paper-scroll::-webkit-scrollbar-track {
+    background: #f5f5f4;
+  }
+  .paper-scroll::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>(".tab-btn");
+  const panels = document.querySelectorAll<HTMLElement>(".panel-content");
+
+  function activate(tabId: string) {
+    tabs.forEach((tab) => {
+      tab.setAttribute("data-active", tab.id === tabId ? "true" : "false");
+    });
+    const panelId = "panel-" + tabId.replace("tab-", "");
+    panels.forEach((panel) => {
+      panel.classList.toggle("hidden", panel.id !== panelId);
+    });
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => activate(tab.id));
+  });
+</script>
